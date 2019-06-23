@@ -7,6 +7,7 @@ module.exports = {
     //rota de listagem de professores
     async listar(req, res){
         const professor = await professores.find()
+        res.header("Access-Control-Allow-Origin", "*")
         return res.json(professor) // retornando um JSON para os clientes
     },
 
