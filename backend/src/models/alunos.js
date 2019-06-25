@@ -21,15 +21,15 @@ const alunosSchema = new mongoose.Schema({
     },
     etapaum: {
         type: Boolean,
-        required: true
+        required: false
     },
     etapadois: {
         type: Boolean,
-        required:true
+        required: false
     },
     etapatres: {
         type: Boolean,
-        required:true
+        required:false
     }
 })
 

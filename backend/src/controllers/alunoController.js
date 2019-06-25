@@ -29,7 +29,7 @@ module.exports = {
         const aluno = await alunos.findByIdAndUpdate(
             req.params.id, 
             req.body, 
-            {new: true})// {new: true} serve para atualizar o valor da variável produtos
+            {new: true})// {new: true} serve para atualizar o valor da variável alunos
 
         return res.json(aluno)
     },

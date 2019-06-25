@@ -10,7 +10,7 @@ const app = express() // chamando a função express para o server
 app.use(cors())
 app.use(express.json()) // habilitando a troca de dados JSON
 
-mongoose.connect('mongodb://127.0.0.1:27017/admin', {useNewUrlParser: true}) // Iniciando o DB
+mongoose.connect('mongodb://admin1234:admin1234@ds243317.mlab.com:43317/estagio-bd', {useNewUrlParser: true}) // Iniciando o DB
 
 requireDir('./src/models') // dando require para buscar todos os models
 
