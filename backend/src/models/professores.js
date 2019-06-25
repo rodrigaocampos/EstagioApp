@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 
 // criando o model de produto
+
 const professoresSchema = new mongoose.Schema({
     nome: {
         type: String,
@@ -17,7 +18,9 @@ const professoresSchema = new mongoose.Schema({
     criadoEm:{
         type: Date,
         default: Date.now
-    }
+    },
+   
+    
 
 })
 
