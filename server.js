@@ -22,7 +22,7 @@ MongoClient.connect(uri, function(err, client) {
     db = client.db('eng') //aqui colocamos o nome do db
 
     //colocando o server para rodar na porta 3000
-    app.listen(3000, function(){
+    app.listen(4000, function(){
         console.log('Está rodando na porta 3000')
     })
 })
