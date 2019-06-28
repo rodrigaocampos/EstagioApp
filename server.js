@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({extended: true}))
 //utilizando a view engine ejs
 app.set('view engine', 'ejs')
 
-
+const PORT =   process.env.PORT || 3000
 //diz que o servidor só iniciará quando estiver conectado ao mongodb
 MongoClient.connect(uri, function(err, client) {
 
@@ -22,7 +22,7 @@ MongoClient.connect(uri, function(err, client) {
     db = client.db('eng') //aqui colocamos o nome do db
 
     //colocando o server para rodar na porta 3000
-    app.listen(4000, function(){
+    app.listen(PORT, function(){
         console.log('Está rodando na porta 3000')
     })
 })
