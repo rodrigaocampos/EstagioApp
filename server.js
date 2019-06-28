@@ -31,7 +31,7 @@ MongoClient.connect(uri, function(err, client) {
 
 //primeira resposta do server.js
 
-app.get('/login', (req, res) => {
+app.get('/', (req, res) => {
     res.render('login.ejs')
     let cursor = db.collection('data').find()// busca os dados no db
 })
