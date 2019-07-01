@@ -4,19 +4,18 @@
 <head>
   <meta charset="UTF-8">
   <title>sDECOM</title>
-  <link href="../public/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
     integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; color: black;">
-    <a class="navbar-brand" href="#">Sistema de estágio</a>
+    <a class="navbar-brand" href="/lista"><img src="/img/logo.png"></a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" ;>
       <ul class="nav navbar-nav">
         <li><a href="/cadastrar">Cadastrar Alunos</a></li>
         <li class="active"><a href="/lista">Listar Alunos</a></li>
-        <a ><i class="fas fa-user fa-2x"></i></a>
+        <a><i class="fas fa-user fa-2x"></i></a>
       </ul>
     </div>
   </nav>
@@ -24,6 +23,13 @@
   <br><br><br>
 
   <div class="container">
+    <div class="col m12 s12">
+      <a class="waves-effect waves-light btn" onclick="history.go(-1);"
+        style="background: #34a5a1; color: white; float: right;">
+        <i class="fas fa-arrow-left"></i> Voltar
+      </a>
+    </div>
+    <br>
     <h2>Alunos</h2>
   </div>
   <div class="container">
