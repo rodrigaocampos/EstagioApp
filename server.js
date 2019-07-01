@@ -52,6 +52,9 @@ app.get('/lista', (req, res) => {
 
 
 
+
+
+
 //post
 app.post('/lista', (req, res) => {
     db.collection('data').insertOne(req.body, (err, result)=> {
