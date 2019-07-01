@@ -1,72 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <title>ESTAGIO</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>sDECOM</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 </head>
+
 <body>
-        <br><br>
-        <div class="container">
-                <nav class="navbar navbar-inverse navbar-fixed-top">
-                        <div class="container-fluid">
-                          <div class="navbar-header">
-                            <a class="navbar-brand" href="#">Estágio - SDCOM</a>
-                          </div>
-                          <ul class="nav navbar-nav">
-                            <li><a href="/cadastrar">Cadastrar Alunos</a></li>
-                            <li class="active"><a href="/lista">Listar Alunos</a></li>
-                            
-                          </ul>
-                        </div>
-                </nav>
-        </div>
-
-    <br><br><br>
-
-    <div class="container">
-        <h2>Alunos</h2>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; color: black;">
+    <a class="navbar-brand" href="/lista"><img src="/img/logo.png"></a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" ;>
+      <ul class="nav navbar-nav">
+        <li><a href="/cadastrar">Cadastrar Alunos</a></li>
+        <li class="active"><a href="/lista">Listar Alunos</a></li>
+        <a><i class="fas fa-user fa-2x"></i></a>
+      </ul>
     </div>
-    <div class="container">
-        <div class="panel panel-default">
-                <!-- Default panel contents -->
-                
-               
-              
-                <!-- Table -->
-                <table class="table">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Matricula</th>
-                        <th>Email</th>
-                        <th>Turma</th>
-                        <th>Etapa 1</th>
-                        <th>Etapa 2</th>
-                        <th>Etapa 3</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <% data.forEach(function(details) { %>
-                    <tr>
-                        <td><%= details.nome %></td>
-                        <td><%= details.matricula %></td>
-                        <td><%= details.email %></td>
-                        <td><%= details.turma %></td>
-                        <td><%= details.etapa1 %></td>
-                        <td><%= details.etapa2 %></td>
-                        <td><%= details.etapa3 %></td>
-                        <td>  <a href="/etapas/<%= details._id %>" class="btn btn-primary" role="button">Progresso</a> <a href="/edit/<%= details._id %>" class="btn btn-info" role="button">Editar</a>  <a href="/delete/<%= details._id %>" class="btn btn-danger" role="button">Excluir</a> </td> 
-                    </tr>
-                    <% }) %>
-                </tbody>
+  </nav>
 
-            </table>
-        </div>
-        </div>
-                
+  <br><br><br>
 
-        
-        
+  <div class="container">
+    <div class="col m12 s12">
+      <a class="waves-effect waves-light btn" onclick="history.go(-1);"
+        style="background: #34a5a1; color: white; float: right;">
+        <i class="fas fa-arrow-left"></i> Voltar
+      </a>
+    </div>
+    <br>
+    <h2>Alunos</h2>
+  </div>
+  <div class="container">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+
+
+
+      <!-- Table -->
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Matricula</th>
+            <th>Email</th>
+            <th>Turma</th>
+            <th>Etapa 1</th>
+            <th>Etapa 2</th>
+            <th>Etapa 3</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% data.forEach(function(details) { %>
+          <tr>
+            <td><%= details.nome %></td>
+            <td><%= details.matricula %></td>
+            <td><%= details.email %></td>
+            <td><%= details.turma %></td>
+            <td><%= details.etapa1 %></td>
+            <td><%= details.etapa2 %></td>
+            <td><%= details.etapa3 %></td>
+            <td> <a href="/etapas/<%= details._id %>" class="btn btn-primary" role="button">Progresso</a> <a
+                href="/edit/<%= details._id %>" class="btn btn-info" role="button">Editar</a> <a
+                href="/delete/<%= details._id %>" class="btn btn-danger" role="button">Excluir</a> </td>
+          </tr>
+          <% }) %>
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+
+  <footer class="page-footer font-small"
+    style="background-color: #e3f2fd; position: fixed; bottom:0; left:0; width: 100%; height: 80px;">
+    <br>
+    <div class="footer-copyright text-center py-3">© Sistema de Estágio 2019
+      <p>Desenvolvido pelos alunos da disciplina de Engenharia de Software II</p>
+    </div>
+  </footer>
+
+
 </body>
+
 </html>
