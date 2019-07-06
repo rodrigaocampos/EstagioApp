@@ -3,83 +3,114 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>sDECOM</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <title>ESTAGIO</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="shortcut icon" type="image/x-icon" href='/views/img/logo.png' />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd; color: black;">
-    <a class="navbar-brand" href="/lista"><img src="/img/logo.png"></a>
+
+    <a class="navbar-brand" href="/lista"><img src="/views/img/logo.png"> de estágio</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent" ;>
-      <ul class="nav navbar-nav">
-        <li><a href="/cadastrar">Cadastrar Alunos</a></li>
-        <li class="active"><a href="/lista">Listar Alunos</a></li>
-        <a><i class="fas fa-user fa-2x"></i></a>
+      <ul class="nav navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/cadastrar">Cadastrar Alunos</a></li>
+        <li class="nav-item active">
+          <a class="nav-link" href="/lista">Listar Alunos</a></li>
       </ul>
+      <form class="form-inline mr-5 my-lg-0">
+        <a class="btn mr-5" href="/usuarios/login"><i class="fa fa-user fa-2x"></i></a>
+      </form>
     </div>
   </nav>
-
   <br><br><br>
 
+
   <div class="container">
-    <div class="col m12 s12">
+    <div class="col">
       <a class="waves-effect waves-light btn" onclick="history.go(-1);"
         style="background: #34a5a1; color: white; float: right;">
-        <i class="fas fa-arrow-left"></i> Voltar
+        <i class="fa fa-arrow-left"></i> Voltar
       </a>
     </div>
     <br>
     <h2>Alunos</h2>
-  </div>
-  <div class="container">
-    <div class="panel panel-default">
-      <!-- Default panel contents -->
+    <div class="card" style="margin-bottom: 10em;">
+      <div class="card-body">
+
+        <div class="panel panel-default">
+          <!-- Default panel contents -->
 
 
 
-      <!-- Table -->
-      <table class="table">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Matricula</th>
-            <th>Email</th>
-            <th>Turma</th>
-            <th>Etapa 1</th>
-            <th>Etapa 2</th>
-            <th>Etapa 3</th>
-          </tr>
-        </thead>
-        <tbody>
-          <% data.forEach(function(details) { %>
-          <tr>
-            <td><%= details.nome %></td>
-            <td><%= details.matricula %></td>
-            <td><%= details.email %></td>
-            <td><%= details.turma %></td>
-            <td><%= details.etapa1 %></td>
-            <td><%= details.etapa2 %></td>
-            <td><%= details.etapa3 %></td>
-            <td> <a href="/etapas/<%= details._id %>" class="btn btn-primary" role="button">Progresso</a> <a
-                href="/edit/<%= details._id %>" class="btn btn-info" role="button">Editar</a> <a
-                href="/delete/<%= details._id %>" class="btn btn-danger" role="button">Excluir</a> </td>
-          </tr>
-          <% }) %>
-        </tbody>
+          <!-- Table -->
+          <table class="table table-responsive">
+            <thead class="thead-dark" align="center">
+              <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">Matricula</th>
+                <th scope="col">Email</th>
+                <th scope="col">Turma</th>
+                  <th scope="col">1ªEtapa</th>
+                <th scope="col">2ªEtapa</th>
+                <th scope="col">3ªEtapa</th>
+                <th scope="col" style="width: 300px !important;">Ação</th>
+              </tr>
+            </thead>
+            <tbody align="center">
+              <% data.forEach(function(details) { %>
+              <tr>
+                <td><%= details.nome %></td>
+                <td><%= details.matricula %></td>
+                <td><%= details.email %></td>
+                <td><%= details.turma %></td>
+                <td><%= details.etapa1 %></td>
+                <td><%= details.etapa2 %></td>
+                <td><%= details.etapa3 %></td>
+                <td> <a href="/etapas/<%= details._id %>" class="btn btn-primary" role="button">Progresso</a> <a
+                    href="/edit/<%= details._id %>" class="btn btn-info" role="button">Editar</a> <a
+                    href="/delete/<%= details._id %>" class="btn btn-danger" role="button">Excluir</a> </td>
+              </tr>
+              <% }) %>
+            </tbody>
 
-      </table>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
 
-  <footer class="page-footer font-small"
-    style="background-color: #e3f2fd; position: fixed; bottom:0; left:0; width: 100%; height: 80px;">
+
+  <footer class="page-footer font-small" style="background-color: #e3f2fd; 
+    
+    margin-top: 23em;
+    width:100%; 
+    bottom:0;">
     <br>
     <div class="footer-copyright text-center py-3">© Sistema de Estágio 2019
       <p>Desenvolvido pelos alunos da disciplina de Engenharia de Software II</p>
     </div>
   </footer>
 
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
 </body>
 

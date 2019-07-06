@@ -43,12 +43,15 @@ app.get('/cadastrar', (req, res) => {
 
 //resposta da rota /lista
 app.get('/lista', (req, res) => {
-    db.collection('data').find().toArray((err, results) => {
+    db.collection('data').find().sort({turma: -1}).toArray((err, results) => {
         if (err) return console.log(err)
         res.render('lista.ejs', { data: results }) //renderiza o lista.ejs
 
     })
 })
+
+
+
 
 
 
