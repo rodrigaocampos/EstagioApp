@@ -36,15 +36,10 @@ app.get('/', (req, res) => {
     let cursor = db.collection('data').find() // busca os dados no db
 })
 
-app.get('/loginErro', (req, res) => {
-    res.render('loginErro.ejs')
-})
-
 app.get('/cadastrar', (req, res) => {
     res.render('index.ejs')
     let cursor = db.collection('data').find() // busca os dados no db
 })
-
 
 //resposta da rota /lista
 app.get('/lista', (req, res) => {
@@ -176,18 +171,6 @@ app.route('/login/')
     })
 
 
-
-//rota de verificacao do login
-
-app.route('/verificaLogin/')
-.get((req, res) => {
-    var id = req.params.id
-    var senha = 123
-    db.collection('data').find(ObjectID(id)).toArray((err, result) => {
-        if (err) return res.send(err)
-        res.render('verificaLogin.ejs', {data:result})
-    })
-})
 
 
 module.exports = app;
