@@ -59,8 +59,6 @@ app.get('/lista', (req, res) => {
 //post listagem
 app.post('/lista', (req, res) => {
 
-    var teste = 0
-
     db.collection('data').insertOne(req.body, (err, result)=> {
     if(err) return console.log(err)
     console.log('salvo no banco de dados')
@@ -162,7 +160,16 @@ app.route('/etapas/:id')
 })
 
 
+// cadastrar professor
 
+app.post('/cadastraProfessor', (req, res) => {
+
+    db.collection('professor').insertOne(req.body, (err, result)=> {
+    if(err) return console.log(err)
+    console.log('professor salvo no banco de dados')
+    res.redirect('/')
+    })
+})
 
 
 
