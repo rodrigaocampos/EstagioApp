@@ -51,6 +51,7 @@ app.get('/lista', (req, res) => {
     db.collection('data').find().sort({ turma: -1 }).toArray((err, results) => {
         if (err) return console.log(err)
         res.render('lista.ejs', { data: results }) //renderiza o lista.ejs
+        console.log(results[0].nome)
 
     })
 })
@@ -60,13 +61,13 @@ app.get('/lista', (req, res) => {
 
 
 
-//post
+//post listagem
 app.post('/lista', (req, res) => {
-    db.collection('data').insertOne(req.body, (err, result) => {
-        if (err) return console.log(err)
-        console.log('salvo no banco de dados')
-        res.redirect('/lista')
-        db.collection('data').find().toArray((err, results) => {
+    db.collection('data').insertOne(req.body, (err, result)=> {
+    if(err) return console.log(err)
+    console.log('salvo no banco de dados')
+    res.redirect('/lista')
+        db.collection('data').find().toArray((err, results) =>{
             console.log(results)
         })
     })
@@ -126,7 +127,7 @@ app.route('/delete/:id')
         })
     })
 
-//rota da atualização
+//rota da atualização das etapas
 app.route('/etapas/:id')
     .get((req, res) => {
         var id = req.params.id
@@ -173,6 +174,20 @@ app.route('/login/')
             res.render('login.ejs', { data: result })
         })
     })
+
+
+
+//rota de verificacao do login
+
+app.route('/verificaLogin/')
+.get((req, res) => {
+    var id = req.params.id
+    var senha = 123
+    db.collection('data').find(ObjectID(id)).toArray((err, result) => {
+        if (err) return res.send(err)
+        res.render('verificaLogin.ejs', {data:result})
+    })
+})
 
 
 module.exports = app;
