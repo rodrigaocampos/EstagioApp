@@ -46,14 +46,14 @@ app.get('/lista', (req, res) => {
     db.collection('data').find().sort({turma: -1}).toArray((err, results) => {
         if (err) return console.log(err)
         res.render('lista.ejs', { data: results }) //renderiza o lista.ejs
-        console.log(results[0].nome)
+        console.log(results[0])
 
     })
 })
 
 
 
-
+//jesus
 
 
 //post listagem
