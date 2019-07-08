@@ -171,6 +171,9 @@ app.post('/cadastraProfessor', (req, res) => {
     })
 })
 
+app.get('/cadastrarProfessor', (req, res) => {
+    res.render('cadastraProfessor.ejs')
+})
 
 
 
@@ -186,7 +189,47 @@ app.route('/login/')
     })
 })
 
+// login erro
+app.get('/loginErro', (req, res) => {
+    res.render('loginErro.ejs')
+})
+
+// valida login
+
+app.post('/validaLogin', (req, res) => {
+
+        usuario = req.body.usuario 
+        senha = req.body.senha
+
+        db.collection('professor').find().toArray((err, results) =>{
+            let professores = results
+            let acesso = 0
+            for (const professor of professores) {
+                console.log(professor.nome)
+                
+                if (professor.usuario == usuario && professor.senha == senha) {
+                    acesso = 1
+                }else{
+                    acesso = 2
+                }
+
+            }
+
+            if (acesso == 1){
+                res.redirect('/lista')
+            }else{
+                res.redirect('loginErro')
+            }
+    
+  
+        })
+
+       
+    
+})
 
 
 
-module.exports = app;
+
+
+module.exports = app
