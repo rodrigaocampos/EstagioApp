@@ -130,19 +130,19 @@
                         <h3 style="text-align: center; font-weight: 550; font-size: 2em;">Login</h3>
                     </div>
                     <div class="card-body">
-                        <form action="/lista" method="GET">
+                        <form action="/validaLogin" method="POST">
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Login">
+                                <input name="usuario" type="text" class="form-control" placeholder="usuario">
 
                             </div>
                             <div class="input-group form-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="Senha">
+                                <input name="senha" type="password" class="form-control" placeholder="Senha">
                             </div>
                             <br>
                             <div class="form-group">

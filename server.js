@@ -59,8 +59,6 @@ app.get('/lista', (req, res) => {
 //post listagem
 app.post('/lista', (req, res) => {
 
-    var teste = 0
-
     db.collection('data').insertOne(req.body, (err, result)=> {
     if(err) return console.log(err)
     console.log('salvo no banco de dados')
@@ -162,8 +160,20 @@ app.route('/etapas/:id')
 })
 
 
+// cadastrar professor
 
+app.post('/cadastraProfessor', (req, res) => {
 
+    db.collection('professor').insertOne(req.body, (err, result)=> {
+    if(err) return console.log(err)
+    console.log('professor salvo no banco de dados')
+    res.redirect('/')
+    })
+})
+
+app.get('/cadastrarProfessor', (req, res) => {
+    res.render('cadastraProfessor.ejs')
+})
 
 
 
@@ -179,7 +189,47 @@ app.route('/login/')
     })
 })
 
+// login erro
+app.get('/loginErro', (req, res) => {
+    res.render('loginErro.ejs')
+})
+
+// valida login
+
+app.post('/validaLogin', (req, res) => {
+
+        usuario = req.body.usuario 
+        senha = req.body.senha
+
+        db.collection('professor').find().toArray((err, results) =>{
+            let professores = results
+            let acesso = 0
+            for (const professor of professores) {
+                console.log(professor.nome)
+                
+                if (professor.usuario == usuario && professor.senha == senha) {
+                    acesso = 1
+                }else{
+                    acesso = 2
+                }
+
+            }
+
+            if (acesso == 1){
+                res.redirect('/lista')
+            }else{
+                res.redirect('loginErro')
+            }
+    
+  
+        })
+
+       
+    
+})
 
 
 
-module.exports = app;
+
+
+module.exports = app
