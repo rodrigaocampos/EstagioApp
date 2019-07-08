@@ -33,19 +33,19 @@ MongoClient.connect(uri, function(err, client) {
 
 app.get('/', (req, res) => {
     res.render('login.ejs')
-    let cursor = db.collection('aluno').find()// busca os dados no db
+    let cursor = db.collection('data').find()// busca os dados no db
 })
 
 app.get('/cadastrar', (req, res) => {
     res.render('index.ejs')
-    let cursor = db.collection('aluno').find()// busca os dados no db
+    let cursor = db.collection('data').find()// busca os dados no db
 })
 
 //resposta da rota /lista
 app.get('/lista', (req, res) => {
-    db.collection('aluno').find().sort({turma: -1}).toArray((err, results) => {
+    db.collection('data').find().sort({turma: -1}).toArray((err, results) => {
         if (err) return console.log(err)
-        res.render('lista.ejs', { aluno: results }) //renderiza o lista.ejs
+        res.render('lista.ejs', { data: results }) //renderiza o lista.ejs
         console.log(results[0].nome)
 
     })
@@ -59,11 +59,11 @@ app.get('/lista', (req, res) => {
 //post listagem
 app.post('/lista', (req, res) => {
 
-    db.collection('aluno').insertOne(req.body, (err, result)=> {
+    db.collection('data').insertOne(req.body, (err, result)=> {
     if(err) return console.log(err)
     console.log('salvo no banco de dados')
     res.redirect('/lista')
-        db.collection('aluno').find().toArray((err, results) =>{
+        db.collection('data').find().toArray((err, results) =>{
             teste = results
             console.log(teste)
         })
@@ -74,9 +74,9 @@ app.post('/lista', (req, res) => {
 app.route('/edit/:id')
 .get((req, res) => {
     var id = req.params.id
-    db.collection('aluno').find(ObjectID(id)).toArray((err, result) => {
+    db.collection('data').find(ObjectID(id)).toArray((err, result) => {
         if (err) return res.send(err)
-        res.render('edit.ejs', {aluno:result})
+        res.render('edit.ejs', {data:result})
     })
 })
 
@@ -93,7 +93,7 @@ app.route('/edit/:id')
     var inicio = req.body.inicio
     var termino = req.body.termino
 
-    db.collection('aluno').updateOne({_id: ObjectID(id)},  {
+    db.collection('data').updateOne({_id: ObjectID(id)},  {
         $set:{
             nome: nome,
             matricula: matricula,
@@ -117,7 +117,7 @@ app.route('/edit/:id')
 app.route('/delete/:id')
 .get((req, res) => {
     var id = req.params.id
-    db.collection('aluno').deleteOne({_id: ObjectID(id)}, (err, result) => {
+    db.collection('data').deleteOne({_id: ObjectID(id)}, (err, result) => {
         if (err) return res.send(500, err)
         console.log('deletando do bd')
         res.redirect('/lista')
@@ -128,9 +128,9 @@ app.route('/delete/:id')
 app.route('/etapas/:id')
 .get((req, res) => {
     var id = req.params.id
-    db.collection('aluno').find(ObjectID(id)).toArray((err, result) => {
+    db.collection('data').find(ObjectID(id)).toArray((err, result) => {
         if (err) return res.send(err)
-        res.render('etapas.ejs', {aluno:result})
+        res.render('etapas.ejs', {data:result})
     })
 })
 
@@ -143,7 +143,7 @@ app.route('/etapas/:id')
     var etapa2= req.body.etapa2
     var etapa3 = req.body.etapa3
 
-    db.collection('aluno').updateOne({_id: ObjectID(id)},  {
+    db.collection('data').updateOne({_id: ObjectID(id)},  {
         $set:{
             nome: nome,
             etapa1: etapa1,
@@ -183,9 +183,9 @@ app.get('/cadastrarProfessor', (req, res) => {
 app.route('/login/')
 .get((req, res) => {
     var id = req.params.id
-    db.collection('aluno').find(ObjectID(id)).toArray((err, result) => {
+    db.collection('data').find(ObjectID(id)).toArray((err, result) => {
         if (err) return res.send(err)
-        res.render('login.ejs', {aluno:result})
+        res.render('login.ejs', {data:result})
     })
 })
 
